@@ -51,7 +51,7 @@ const ErrorMessage = styled.div`
     margin-bottom:2rem;
 `;
 
-const Formulario = ({ setResumen }) => {
+const Formulario = ({ setResumen , setCargando }) => {
 
     const [datos, setDatos] = useState({
         marca: '',
@@ -117,10 +117,18 @@ const Formulario = ({ setResumen }) => {
 
         //  Total
 
-        setResumen({
-            cotizacion: resultado,
-            datos
-        })
+        setCargando(true);
+
+        setTimeout(() => {
+            setCargando(false);
+
+            setResumen({
+                cotizacion: resultado,
+                datos
+            });
+             
+        }, 3000);
+        
     }
 
     return (
